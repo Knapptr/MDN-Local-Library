@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1=title
+    h3 Delete #{book.title}?
+    if bookInstances.length > 0
+        p The following book-instances must be deleted first
+        ul
+            for instance in bookInstances
+                li 
+                    a(href=instance.url) #{instance.book.title}, Publisher: #{instance.imprint} instance ID: #{instance._id}
+    else
+        form(method="POST",action="")
+            input(name="delete" type="hidden",value=book._id)
+            button.btn.btn-primary(type="submit") Delete                
+                    

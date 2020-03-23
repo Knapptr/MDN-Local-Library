@@ -1,0 +1,16 @@
+extends layout
+
+block content
+
+    h1= title +" Copy"
+
+    p Delete this instance of #{bookTitle}?
+
+    h4 Id: #{id}
+
+    h4 Imprint: #{imprint}
+
+    form(method="POST" action='')
+        .form-group
+            input#bookinstanceid.form-control(type='hidden', name="bookinstance_id",required="true" value= id)
+        button.btn.btn-primary(type="submit") Delete

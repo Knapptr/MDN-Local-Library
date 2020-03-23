@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+    h1= title
+
+    h3 Delete #{genre.name} ?
+
+
+    if books
+        p Unable to delete genre. Delete the following books first:
+        ul    
+            for book in books
+                li
+                    a(href=book.url) !{book.title}
+    
+    if !books
+        form(method="POST" action="")
+            input(name="delete" value=genre._id type='hidden')
+            button.btn.btn-primary(type="submit") Delete
+
