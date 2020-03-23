@@ -12,9 +12,12 @@ var catalogRouter = require('./routes/catalog')
 
 var app = express();
 
-var credentials = require('./dbInfo') //DATABASE INFO
+
 var mongoose = require('mongoose');
-var mongoDB = credentials;
+
+const PW = "Relyt352%21" //URL ENCODED: ORIGINAL IS "Relyt352!"
+const dev_db_url= `mongodb+srv://Knapptr:${PW}@cluster0-m6riz.gcp.mongodb.net/test?retryWrites=true&w=majority`;
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true,useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error',console.error.bind(console,'MongoDB connection error:'))
